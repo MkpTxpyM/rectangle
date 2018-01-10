@@ -4,6 +4,10 @@ pipeline{
     maven 'mavenLatest'
   }
 
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '1'))
+  }
+
 
   stages{
     stage('Build'){
