@@ -1,5 +1,5 @@
 pipeline{
-  agent any
+  agent none
   tools{
     maven 'mavenLatest'
   }
@@ -11,6 +11,12 @@ pipeline{
 
   stages{
     stage('Build'){
+      agent{
+       docker{
+        image 'openjdk:8-jre'
+        label 'master'
+       }
+      }
       steps{
        sh 'mvn clean package'
       }
