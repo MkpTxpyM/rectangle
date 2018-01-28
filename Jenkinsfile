@@ -12,10 +12,7 @@ pipeline{
   stages{
     stage('Build'){
       agent{
-       docker{
-        image 'openjdk:8-jre'
         label 'master'
-       }
       }
       steps{
        sh 'mvn clean package'
